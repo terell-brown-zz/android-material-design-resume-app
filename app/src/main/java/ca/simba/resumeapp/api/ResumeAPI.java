@@ -23,15 +23,10 @@ import retrofit.http.Path;
  */
 public interface ResumeAPI {
 
-    @FormUrlEncoded
-    @POST("/rest-auth/login/")
-     CSRF login(
-                    @Field("username") String username,
-                    @Field("password") String password);
 
     @FormUrlEncoded
     @POST("/rest-auth/login/")
-    void loginA(
+    void login(
             @Field("username") String username,
             @Field("password") String password,
             Callback<CSRF> response);

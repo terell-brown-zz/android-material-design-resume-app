@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     boolean loggedIn;
     boolean isLoggedIn;
 
-    public static final String ENDPOINT="http://services.hanselandpetal.com";
+    public static final String ENDPOINT = "http://services.hanselandpetal.com";
 
 
     @Override
@@ -63,13 +63,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 username = etUsername.getText().toString();
                 try {
                     Credentials.save(activityContext, username, etPassword.getText().toString());
-                    LoginTask loginTask = new LoginTask();
-
-                    //loginTask.execute(etPassword.getText().toString()); // sets isLogged = True if login is sucessful
-                    //loginTask.get(10, TimeUnit.SECONDS);
                     login();
                 } catch (Exception e) {
-                    Toast.makeText(activityContext,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activityContext, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 if (isLoggedIn) {
@@ -81,7 +77,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void goToResumeListActivity() {
         Intent intent = new Intent(this, MyResumesActivity.class);
-        intent.putExtra(Constants.USERNAME,username);
+        intent.putExtra(Constants.USERNAME, username);
         intent.putExtra(Constants.RESUMES, resumes);
         startActivity(intent);
     }
@@ -99,18 +95,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         Log.e("Auth", authHeader);
         try {
-            Credentials.save(activityContext,username,etPassword.getText().toString());
+            Credentials.save(activityContext, username, etPassword.getText().toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        api.loginA(username, etPassword.getText().toString(), new CSRFCallback(activityContext));
-        //Toast.makeText(activityContext, csrf.getKey(), Toast.LENGTH_LONG).show();
-        //api.getResumes(authHeader, username.toString(), new UserCallback());
-
-//        Toast.makeText(activityContext,"The username or password is incorrect. Please login again.",Toast.LENGTH_LONG).show();
-//        etPassword.setText("");
-        }
-
+        api.login(username, etPassword.getText().toString(), new CSRFCallback(activityContext));
+    }
 
 
     public class CSRFCallback implements Callback<CSRF> {
@@ -124,75 +114,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         @Override
         public void success(CSRF csrf, Response response) {
             Credentials.get(context).key().put(csrf.getKey());
-            Toast.makeText(activityContext, csrf.getKey(), Toast.LENGTH_SHORT).show();
             goToResumeListActivity();
         }
 
         @Override
         public void failure(RetrofitError error) {
-            Toast.makeText(context, "Login failed. Please check your username and password." , Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Login failed. Please check your username and password.", Toast.LENGTH_LONG).show();
             Log.e("APICall", error.getMessage());
             etPassword.setText("");
         }
     }
 
-    private class UserCallback implements Callback<User> {
-        @Override
-        public void success(User user, retrofit.client.Response response) {
-            Toast.makeText(activityContext, "Welcome " + user.getUsername() + "!", Toast.LENGTH_LONG).show();
-            List<String> resumeList = user.getResumes();
-            resumes = resumeList.toArray(new String[resumeList.size()]);
-        }
-
-        @Override
-        public void failure(RetrofitError error) {
-
-        }
-    }
-
-    private class LoginTask extends AsyncTask<String, Void, String> {
-        //ProgressDialog progressDialog = new ProgressDialog(activityContext);
-        RestAdapter restAdapter;
-
-        @Override
-        protected void onPreExecute() {
-            restAdapter = new RestAdapter.Builder()
-                    .setEndpoint(Endpoints.HOST)
-                    .build();
-
-//            progressDialog.setMessage("Logging In");
-//            progressDialog.setIndeterminate(true);
-//            progressDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String key;
-            ResumeAPI methods = restAdapter.create(ResumeAPI.class);
-
-            try {
-                Log.e("API Check",params[0]);
-                key = methods.login(username, "c4l1l1v1n").getKey();
-                //Toast.makeText(activityContext, key, Toast.LENGTH_LONG).show();
-            } catch (Exception e) {
-                //Toast.makeText(activityContext,e.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-//            if (key != null) {
-//                String authHeader = Credentials.getHeader(activityContext);
-//                User user = methods.getUser(authHeader,username);
-//                return user;
-//            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String key) {
-            if (!(key == null)) {
-                isLoggedIn = true;
-                goToResumeListActivity();
-            }
-           //progressDialog.hide();
-        }
-    }
 }
