@@ -14,6 +14,7 @@ public class Work {
     private long id;
     @Expose
     private List<Experience> experience = new ArrayList<Experience>();
+    private List<String> experiencePoints = new ArrayList<String>();
     @SerializedName("work_type")
     @Expose
     private String workType;
@@ -289,6 +290,17 @@ public class Work {
     public Work withResumeId(long resumeId) {
         this.resumeId = resumeId;
         return this;
+    }
+
+    public List<String> getExperiencePoints() {
+
+        for(Experience exp: experience) {
+            String description = exp.getDescription();
+            if (!experiencePoints.contains(description)) {
+                experiencePoints.add(description);
+            }
+        }
+        return experiencePoints;
     }
 
 

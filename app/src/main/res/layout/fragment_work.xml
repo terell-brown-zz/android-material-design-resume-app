@@ -18,7 +18,10 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Work Yo" />
+                android:layout_margin="@dimen/header_margin"
+                android:text="WORK EXPERIENCE"
+                android:textSize="20dp"
+                android:textColor="@color/black" />
 
             <View
                 android:layout_width="match_parent"

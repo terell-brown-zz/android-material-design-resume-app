@@ -1,7 +1,7 @@
-package ca.simba.resumeapp.pojo;
+package ca.simba.resumeapp.mypojo;
 
 /**
- * Created by tmast_000 on 9/2/2015.
+ * Created by tmast_000 on 9/11/2015.
  */
 public class CSRF {
 

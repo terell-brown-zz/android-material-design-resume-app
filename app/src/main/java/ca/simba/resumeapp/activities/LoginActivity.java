@@ -18,7 +18,7 @@ import ca.simba.resumeapp.Credentials;
 import ca.simba.resumeapp.R;
 import ca.simba.resumeapp.api.Endpoints;
 import ca.simba.resumeapp.api.ResumeAPI;
-import ca.simba.resumeapp.pojo.CSRF;
+import ca.simba.resumeapp.mypojo.CSRF;
 import ca.simba.resumeapp.mypojo.User;
 import retrofit.Callback;
 import retrofit.RestAdapter;

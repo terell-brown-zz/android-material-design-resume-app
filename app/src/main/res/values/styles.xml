@@ -9,8 +9,13 @@
 
     <style name="CardStyle" parent="CardView.Light">
         <item name="cardElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardCornerRadius">@dimen/cardview_corner_radius</item>
         <item name="android:layout_margin">@dimen/cardview_margin</item>
+    </style>
+
+    <style name="ListFont" parent="@android:style/Widget.ListView">
+        <item name="android:textColor">@color/accent_material_dark</item>
+        <item name="android:typeface">sans</item>
     </style>
 
 </resources>

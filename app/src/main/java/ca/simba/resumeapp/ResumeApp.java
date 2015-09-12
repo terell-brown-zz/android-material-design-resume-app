@@ -3,7 +3,7 @@ package ca.simba.resumeapp;
 
 import ca.simba.resumeapp.api.Endpoints;
 import ca.simba.resumeapp.api.ResumeAPI;
-import ca.simba.resumeapp.pojo.Resume;
+import ca.simba.resumeapp.mypojo.Resume;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -23,6 +23,4 @@ public class ResumeApp {
 
         return api;
     }
-
-
 }

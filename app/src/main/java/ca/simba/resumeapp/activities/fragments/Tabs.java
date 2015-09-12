@@ -9,14 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.w3c.dom.Text;
+import android.widget.ListView;
 
 import java.util.List;
-import java.util.concurrent.RecursiveAction;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import ca.simba.resumeapp.R;
 import ca.simba.resumeapp.adapters.EducationListAdapter;
 import ca.simba.resumeapp.adapters.SkillListAdapter;
@@ -26,8 +23,8 @@ import ca.simba.resumeapp.mypojo.Skill;
 import ca.simba.resumeapp.mypojo.Work;
 import ca.simba.resumeapp.views.SimpleDividerItemDecoration;
 
-public class Tabs {
 
+public class Tabs {
     public static SkillFragment getSkillsTab(Context c, List<Skill> skills) {
         SkillFragment tab = new SkillFragment();
         tab.setContext(c);
@@ -49,6 +46,47 @@ public class Tabs {
         return tab;
     }
 
+public static class WorkFragment extends Fragment {
+
+        // Backend
+        private Context activityContext;
+
+        RecyclerView rvWork;
+
+        // Business Logic
+        private List<Work> jobs;
+        private View fragment;
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.fragment_work, container, false);
+            activityContext = container.getContext();
+            fragment = view;
+            setupRecyclerView(view);
+            return view;
+        }
+
+        private void setupRecyclerView(View v) {
+            rvWork = (RecyclerView) v.findViewById(R.id.rvWork);
+            rvWork.setLayoutManager(new LinearLayoutManager(getActivity()));
+            rvWork.addItemDecoration(new SimpleDividerItemDecoration(activityContext));
+            rvWork.setItemAnimator(new DefaultItemAnimator());
+            WorkListAdapter adapter = new WorkListAdapter(jobs, activityContext);
+            rvWork.setAdapter(adapter);
+        }
+
+        public void setData(List<Work> jobs) {
+            this.jobs = jobs;
+        }
+
+        public void setContext(Context c) {
+            this.activityContext = c;
+        }
+    }
+
+    /**
+    * Created by tmast_000 on 9/11/2015.
+    */
     public static class SkillFragment extends Fragment {
 
         // Backend
@@ -88,45 +126,9 @@ public class Tabs {
         }
     }
 
-    public static class WorkFragment extends Fragment {
-
-        // Backend
-        private Context activityContext;
-        //@Bind(R.id.tvSkillName) Text tvSkillName;
-        //@Bind(R.id.rvSkills)
-        RecyclerView rvWork;
-
-        // Business Logic
-        private List<Work> jobs;
-        private View fragment;
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_work, container, false);
-            activityContext = container.getContext();
-            fragment = view;
-            setupRecyclerView(view);
-            return view;
-        }
-
-        private void setupRecyclerView(View v) {
-            rvWork = (RecyclerView) v.findViewById(R.id.rvWork);
-            rvWork.setLayoutManager(new LinearLayoutManager(getActivity()));
-            rvWork.addItemDecoration(new SimpleDividerItemDecoration(activityContext));
-            rvWork.setItemAnimator(new DefaultItemAnimator());
-            WorkListAdapter adapter = new WorkListAdapter(jobs, activityContext);
-            rvWork.setAdapter(adapter);
-        }
-
-        public void setData(List<Work> jobs) {
-            this.jobs = jobs;
-        }
-
-        public void setContext(Context c) {
-            this.activityContext = c;
-        }
-    }
-
+    /**
+    * Created by tmast_000 on 9/11/2015.
+    */
     public static class EducationFragment extends Fragment {
 
         // Backend

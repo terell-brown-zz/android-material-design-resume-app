@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import butterknife.OnClick;
 import ca.simba.resumeapp.Constants;
 import ca.simba.resumeapp.R;
 import ca.simba.resumeapp.activities.ResumeDetailsActivity;
+import ca.simba.resumeapp.activities.Utils.DateTimeUtil;
 import ca.simba.resumeapp.mypojo.Skill;
 import ca.simba.resumeapp.mypojo.Work;
 
@@ -54,19 +57,41 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.WorkVi
 
         // Views
         @Bind(R.id.tvJobHeader) TextView tvJobHeader;
-
+        @Bind(R.id.tvCompany) TextView tvCompany;
+        @Bind(R.id.tvTimeSpan) TextView tvTimeSpan;
+        @Bind(R.id.experinceList)
+        ListView expList;
         private final Context activityContext;
 
 
         public WorkViewHolder(Context c, View itemView) {
             super(itemView);
             activityContext = c;
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
+
+        }
+
+        private void setupListView(View itemView, List<String> data) {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(activityContext,
+                    android.R.layout.simple_list_item_1, data);
+            expList.setAdapter(adapter);
         }
 
 
         public void bind(Work Work) {
-            tvJobHeader.setText(Work.getPosition() + " @ " + Work.getOrganization());
+
+            tvJobHeader.setText(Work.getPosition());
+            tvCompany.setText("@ " + Work.getOrganization());
+
+            setJobTimeSpan(Work.getStartDate(), Work.getEndDate());
+            //setupListView(itemView, Work.getExperiencePoints());
         }
+
+        private void setJobTimeSpan(String startDate, String endDate) {
+            tvTimeSpan.setText(DateTimeUtil.toMonthYearTextFormat(startDate) + " - " +
+                    DateTimeUtil.toMonthYearTextFormat(endDate));
+        }
+
+
     }
 }

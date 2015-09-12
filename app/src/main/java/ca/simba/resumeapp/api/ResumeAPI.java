@@ -4,8 +4,7 @@ import android.util.Base64;
 
 import java.util.List;
 
-import ca.simba.resumeapp.pojo.CSRF;
-import ca.simba.resumeapp.pojo.Credential;
+import ca.simba.resumeapp.mypojo.CSRF;
 import ca.simba.resumeapp.mypojo.Resume;
 import ca.simba.resumeapp.mypojo.User;
 import retrofit.Callback;

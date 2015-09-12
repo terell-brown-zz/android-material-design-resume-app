@@ -5,4 +5,10 @@
     <dimen name="appbar_elevation">8dp</dimen>
     <dimen name="card_height">72dp</dimen>
     <dimen name="cardview_margin">8dp</dimen>
+    <dimen name="cardview_corner_radius">8dp</dimen>
+    <dimen name="content_marginLeft">16dp</dimen>
+    <dimen name="divider_thickness">1.5dp</dimen>
+    <dimen name="content_marginTop">25dp</dimen>
+    <dimen name="header_margin">16dp</dimen>
+    <dimen name="content_marginRight">16dp</dimen>
 </resources>
