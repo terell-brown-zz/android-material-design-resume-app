@@ -23,7 +23,7 @@ public class DateTimeUtil {
 
         public static String toMonthYearTextFormat(String date) {
             SimpleDateFormat currentFormat = new SimpleDateFormat("yyyy-MM-F");
-            SimpleDateFormat desiredFormat = new SimpleDateFormat("MMM-yy");
+            SimpleDateFormat desiredFormat = new SimpleDateFormat("MMM yyyy");
 
             Date mDate;
             String formattedTime;
@@ -50,4 +50,6 @@ public class DateTimeUtil {
             }
             return formattedTime;
         };
+
+
 }

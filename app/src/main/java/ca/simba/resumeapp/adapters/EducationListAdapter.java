@@ -17,6 +17,7 @@ import butterknife.OnClick;
 import ca.simba.resumeapp.Constants;
 import ca.simba.resumeapp.R;
 import ca.simba.resumeapp.activities.ResumeDetailsActivity;
+import ca.simba.resumeapp.activities.Utils.DateTimeUtil;
 import ca.simba.resumeapp.mypojo.Skill;
 import ca.simba.resumeapp.mypojo.Education;
 
@@ -53,8 +54,9 @@ public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdap
     public class EducationViewHolder extends RecyclerView.ViewHolder {
 
         // Views
-        @Bind(R.id.tvEducationHeader) TextView tvEducationHeader;
-
+        @Bind(R.id.tvProgram) TextView tvProgram;
+        @Bind(R.id.tvSchool) TextView tvSchool;
+        @Bind(R.id.tvTimeSpan) TextView tvTimeSpan;
         private final Context activityContext;
 
 
@@ -66,7 +68,14 @@ public class EducationListAdapter extends RecyclerView.Adapter<EducationListAdap
 
 
         public void bind(Education education) {
-            tvEducationHeader.setText(education.getProgram() + " @ " + education.getSchool());
+            tvProgram.setText(education.getDegreeType() + ", " + education.getProgram());
+            tvSchool.setText(education.getSchool());
+            setJobTimeSpan(education.getStartDate(),education.getEndDate());
+        }
+
+        private void setJobTimeSpan(String startDate, String endDate) {
+            tvTimeSpan.setText(DateTimeUtil.toMonthYearTextFormat(startDate) + " - " +
+                    DateTimeUtil.toMonthYearTextFormat(endDate));
         }
     }
 }

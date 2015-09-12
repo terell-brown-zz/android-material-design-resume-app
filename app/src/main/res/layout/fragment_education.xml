@@ -18,7 +18,14 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Skills Yo" />
+                android:layout_margin="@dimen/header_margin"
+                android:text="@string/education_tab_title"
+                android:textSize="20dp"
+                android:textColor="@color/black" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvEducation"

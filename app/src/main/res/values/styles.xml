@@ -18,4 +18,13 @@
         <item name="android:typeface">sans</item>
     </style>
 
+    <style name="AppLogo" parent="AppTheme">
+        <item name="android:textColor">@color/accent_material_dark</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textSize">@dimen/app_title_font_size</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

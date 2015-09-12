@@ -12,4 +12,6 @@
     <dimen name="header_margin">16dp</dimen>
     <dimen name="content_marginRight">16dp</dimen>
     <dimen name="content_spacing">3dp</dimen>
+    <dimen name="app_title_font_size">40dp</dimen>
+    <dimen name="app_title_margin">40dp</dimen>
 </resources>

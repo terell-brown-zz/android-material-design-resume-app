@@ -12,4 +12,6 @@
     <string name="sample_text_company">Zappos</string>
     <string name="sample_text_job_exp">Implemented material design on the Zappos Android App</string>
     <string name="sample_text_job_skills">Android SDK, Java, Python</string>
+    <string name="sample_text_school">University of Waterloo</string>
+    <string name="education_tab_title">EDUCATION</string>
 </resources>

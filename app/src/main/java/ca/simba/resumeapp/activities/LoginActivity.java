@@ -53,8 +53,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         etPassword = (EditText) findViewById(R.id.etPassword);
         bLogin = (Button) findViewById(R.id.bLogin);
         bLogin.setOnClickListener(this);
-        bSignUp = (Button) findViewById(R.id.bSignUp);
-        bSignUp.setOnClickListener(this);
     }
 
 
