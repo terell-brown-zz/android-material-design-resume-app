@@ -1,8 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="CardStyle" parent="CardView.Light">
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="android:layout_margin">@dimen/cardview_margin</item>
     </style>
 
 </resources>

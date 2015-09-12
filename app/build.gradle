@@ -20,6 +20,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:recyclerview-v7:22.0.0'
+    compile 'com.android.support:cardview-v7:22.0.+'
+    compile 'com.mcxiaoke.volley:library:1.0.18'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    // Library built by square for sending api requests and dealing with the response
+    //compile 'com.google.code.gson:gson:2.2.4' // GSON is a google built library used to convert java objects to/from JSONN representations
+    compile 'com.lacronicus:easydatastorelib:+'
+    // A wrapper for SharedPreferences, making it easier to write and read data
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:design:22.2.0'
+    compile files('libs/Resume-sources.jar')
 }
+

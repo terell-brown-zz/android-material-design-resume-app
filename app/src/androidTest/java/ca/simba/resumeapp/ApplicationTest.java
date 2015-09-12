@@ -1,4 +1,4 @@
-package ca.simba.apipractice;
+package ca.simba.resumeapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
