@@ -32,6 +32,7 @@ dependencies {
     // A wrapper for SharedPreferences, making it easier to write and read data
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:design:22.2.0'
+    compile 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
     compile files('libs/Resume-sources.jar')
 }
 

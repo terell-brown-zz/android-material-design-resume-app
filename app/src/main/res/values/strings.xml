@@ -10,4 +10,6 @@
     <string name="sample_text_job_header">Mobile Developer</string>
     <string name="sample_text_time_span">June 2016 - August 2016</string>
     <string name="sample_text_company">Zappos</string>
+    <string name="sample_text_job_exp">Implemented material design on the Zappos Android App</string>
+    <string name="sample_text_job_skills">Android SDK, Java, Python</string>
 </resources>

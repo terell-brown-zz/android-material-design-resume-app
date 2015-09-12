@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+
 import java.util.List;
 
 import butterknife.Bind;
@@ -99,15 +101,15 @@ public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnT
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         createTabFragments();
+        adapter.addFrag(workTab, Constants.TITLE_WORK);
         adapter.addFrag(skillTab, Constants.TITLE_SKILLS);
         adapter.addFrag(educationTab, Constants.TITLE_EDUCATION);
-        adapter.addFrag(workTab, Constants.TITLE_WORK);
         viewPager.setAdapter(adapter);
     }
 
     private void createTabFragments() {
         skillTab = Tabs.getSkillsTab(activityContext, skills);
-        workTab = Tabs.getWorkTab(activityContext,jobs);
+        workTab = Tabs.getWorkTab(activityContext, jobs);
         educationTab = Tabs.getEducationTab(activityContext, educationList);
     }
 

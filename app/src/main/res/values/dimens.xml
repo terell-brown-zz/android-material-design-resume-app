@@ -11,4 +11,5 @@
     <dimen name="content_marginTop">25dp</dimen>
     <dimen name="header_margin">16dp</dimen>
     <dimen name="content_marginRight">16dp</dimen>
+    <dimen name="content_spacing">3dp</dimen>
 </resources>

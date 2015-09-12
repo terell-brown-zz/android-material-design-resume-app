@@ -10,5 +10,6 @@
     <color name="colorPrimaryd">#F5F5F5</color>
     <color name="colorPrimary">#9C27B0</color>
     <color name="backgroundWhite">#FAFAFA</color>
+    <color name="colorAccent">#FFD54F</color>
 
 </resources>
