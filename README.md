@@ -9,6 +9,7 @@ Displays resume data as shownn below:
 <img src=https://cloud.githubusercontent.com/assets/8221118/9835542/8ae45262-59be-11e5-9a7c-0250912dd4e0.png width="150">
 
 ####TODO:
+* Make skills tab look nice
 * Add Navigation Drawer 
 * Encrypt user credentials in storage
 * Add ability to share resume
