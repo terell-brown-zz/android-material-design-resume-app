@@ -1,24 +1,18 @@
 package ca.simba.resumeapp.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import ca.simba.resumeapp.Constants;
 import ca.simba.resumeapp.R;
-import ca.simba.resumeapp.activities.ResumeDetailsActivity;
-import ca.simba.resumeapp.activities.Utils.DateTimeUtil;
-import ca.simba.resumeapp.mypojo.Skill;
+import ca.simba.resumeapp.util.DateTimeUtil;
 import ca.simba.resumeapp.mypojo.Education;
 
 /**

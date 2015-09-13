@@ -71,7 +71,7 @@ public class ResumesListAdapter extends RecyclerView.Adapter<ResumesListAdapter.
             tvResumeName.setText(resumeName);
         }
 
-        @OnClick(R.id.viewHolder)
+
         public void showResume() {
             Intent intent = new Intent(activityContext, ResumeDetailsActivity.class);
             intent.putExtra(Constants.RESUMES, resumeName);

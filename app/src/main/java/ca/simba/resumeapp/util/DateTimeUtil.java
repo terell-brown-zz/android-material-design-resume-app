@@ -1,4 +1,4 @@
-package ca.simba.resumeapp.activities.Utils;
+package ca.simba.resumeapp.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

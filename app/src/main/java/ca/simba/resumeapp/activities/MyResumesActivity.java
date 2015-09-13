@@ -13,9 +13,9 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import ca.simba.resumeapp.Constants;
-import ca.simba.resumeapp.Credentials;
+import ca.simba.resumeapp.util.Credentials;
 import ca.simba.resumeapp.R;
-import ca.simba.resumeapp.ResumeApp;
+import ca.simba.resumeapp.api.ResumeApp;
 import ca.simba.resumeapp.adapters.ResumesListAdapter;
 import ca.simba.resumeapp.mypojo.User;
 import ca.simba.resumeapp.views.SimpleDividerItemDecoration;
@@ -25,11 +25,14 @@ import retrofit.client.Response;
 
 public class MyResumesActivity extends BaseActivity {
 
+    // UI
     @Bind(R.id.toolbar) Toolbar toolbar;
-    private String username = "";
-    //private RecyclerView mRecyclerView;
-    private List<String> resumes;
     private RecyclerView mRecyclerView;
+
+    // Business Logic
+    private String username = "";
+    private List<String> resumes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,6 @@ public class MyResumesActivity extends BaseActivity {
         getResumeInfo();
         setToolbar();
         setUpRecyclerView();
-        //ListView lv = (ListView) findViewById(R.id.lvResumes);
-        //ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resumes);
-        //lv.setAdapter(adapter);
     }
 
     private void getResumeInfo() {

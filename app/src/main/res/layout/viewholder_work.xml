@@ -38,23 +38,4 @@
 
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/experinceList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alwaysDrawnWithCache="true"
-        android:dividerHeight="1dp"
-        android:horizontalSpacing="3dp"
-        android:scrollingCache="true"
-        android:smoothScrollbar="true"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp"
-        style="@style/ListFont" />
-<!--
-    <View
-        android:layout_height="@dimen/divider_thickness"
-        android:layout_width="match_parent"
-        android:background="@color/colorPrimary"/>
--->
-
 </LinearLayout>

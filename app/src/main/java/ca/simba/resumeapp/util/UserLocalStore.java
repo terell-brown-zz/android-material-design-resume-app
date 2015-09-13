@@ -1,4 +1,4 @@
-package ca.simba.resumeapp;
+package ca.simba.resumeapp.util;
 
 import com.lacronicus.easydatastorelib.ObjectEntry;
 import com.lacronicus.easydatastorelib.Preference;
@@ -14,16 +14,10 @@ public interface UserLocalStore {
     @Preference("username")
     StringEntry username();
 
-    @Preference("password")
-    StringEntry password();
-
     @Preference("credentials")
     StringEntry credentials();
 
     @Preference("key")
     StringEntry key();
-
-    @Preference("resumes")
-    ObjectEntry<List<String>> resumes();
 
 }

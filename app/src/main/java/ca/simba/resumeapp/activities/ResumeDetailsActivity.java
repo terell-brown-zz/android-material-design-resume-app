@@ -3,24 +3,20 @@ package ca.simba.resumeapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import ca.simba.resumeapp.Constants;
-import ca.simba.resumeapp.Credentials;
+import ca.simba.resumeapp.util.Credentials;
 import ca.simba.resumeapp.R;
-import ca.simba.resumeapp.ResumeApp;
+import ca.simba.resumeapp.api.ResumeApp;
 import ca.simba.resumeapp.activities.fragments.Tabs;
 import ca.simba.resumeapp.activities.fragments.Tabs.SkillFragment;
 import ca.simba.resumeapp.activities.fragments.Tabs.WorkFragment;
@@ -37,21 +33,23 @@ import retrofit.client.Response;
 /**
  * Created by tmast_000 on 9/11/2015.
  */
-public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener{
+public class ResumeDetailsActivity extends BaseActivity{
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.view_pager)
-    ViewPager viewPager;
-    @Bind(R.id.tab_bar)
-    TabLayout tabBar;
-    private String resumeName;
+    // UI
+    @Bind(R.id.tab_bar) TabLayout tabBar;
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.view_pager) ViewPager viewPager;
+
+    // Tabs
     private SkillFragment skillTab;
+    private WorkFragment workTab;
+    private EducationFragment educationTab;
+
+    // Bussiness Logic
+    private String resumeName;
     private List<Skill> skills;
     public List<Work> jobs;
-    private WorkFragment workTab;
     public List<Education> educationList;
-    private EducationFragment educationTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,31 +63,14 @@ public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnT
 
     }
 
-
     public void setupToolbar(String title) {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(resumeName);
+        getSupportActionBar().setTitle(title);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_resume_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        switch (id) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
         return true;
     }
 
@@ -101,10 +82,13 @@ public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnT
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         createTabFragments();
+
         adapter.addFrag(workTab, Constants.TITLE_WORK);
         adapter.addFrag(skillTab, Constants.TITLE_SKILLS);
         adapter.addFrag(educationTab, Constants.TITLE_EDUCATION);
+
         viewPager.setAdapter(adapter);
+        tabBar.setupWithViewPager(viewPager);
     }
 
     private void createTabFragments() {
@@ -125,8 +109,8 @@ public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnT
                         skills = resume.getSkill();
                         jobs = resume.getWork();
                         educationList = resume.getEducation();
+
                         setupViewPager();
-                        tabBar.setupWithViewPager(viewPager);
                     }
 
                     @Override
@@ -135,33 +119,5 @@ public class ResumeDetailsActivity extends BaseActivity implements TabLayout.OnT
                         Log.e("Auth", error.getMessage());
                     }
                 });
-    }
-
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-
-        switch (tab.getPosition()) {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-                educationTab.setData(educationList);
-                break;
-
-        }
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
     }
 }

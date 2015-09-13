@@ -14,4 +14,6 @@
     <string name="sample_text_job_skills">Android SDK, Java, Python</string>
     <string name="sample_text_school">University of Waterloo</string>
     <string name="education_tab_title">EDUCATION</string>
+    <string name="sample_text_resume_name">My Resume</string>
+    <string name="action_share">share</string>
 </resources>

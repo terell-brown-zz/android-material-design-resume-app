@@ -10,5 +10,4 @@ public class Constants {
     public static final String TITLE_WORK = "EXPERIENCE";
     public static final String TITLE_EDUCATION = "EDUCATION";
     public static String RESUMES = "__RESUMES__";
-    public static String PACKAGE_NAME = "ca.simba.resumeapp";
 }

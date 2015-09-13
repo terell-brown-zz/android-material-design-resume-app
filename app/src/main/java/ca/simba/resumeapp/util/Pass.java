@@ -1,4 +1,4 @@
-package ca.simba.resumeapp;
+package ca.simba.resumeapp.util;
 
 import android.util.Base64;
 import android.util.Log;

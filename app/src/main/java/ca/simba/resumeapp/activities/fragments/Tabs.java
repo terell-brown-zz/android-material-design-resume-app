@@ -33,6 +33,7 @@ import ca.simba.resumeapp.views.SimpleDividerItemDecoration;
 
 
 public class Tabs {
+
     public static SkillFragment getSkillsTab(Context c, List<Skill> skills) {
         SkillFragment tab = new SkillFragment();
         tab.setContext(c);
@@ -48,10 +49,11 @@ public class Tabs {
     }
 
     private static List<ParentObject> castToParentObject(List<Work> jobs) {
+        // Work object must be of type ParentObject to be used in ExpandableRecyclerView Library
 
         List<ParentObject> list = new ArrayList<ParentObject>();
 
-        for (Work work: jobs) {
+        for (Work work : jobs) {
             list.add((ParentObject) work);
         }
         return list;
@@ -64,7 +66,7 @@ public class Tabs {
         return tab;
     }
 
-public static class WorkFragment extends Fragment {
+    public static class WorkFragment extends Fragment {
 
         // Backend
         private Context activityContext;
@@ -72,13 +74,11 @@ public static class WorkFragment extends Fragment {
 
         // Business Logic
         private List<ParentObject> jobs;
-        private View fragment;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_work, container, false);
             activityContext = container.getContext();
-            fragment = view;
             setupRecyclerView(view);
             return view;
         }
@@ -89,6 +89,7 @@ public static class WorkFragment extends Fragment {
             rvWork.addItemDecoration(new SimpleDividerItemDecoration(activityContext));
             rvWork.setItemAnimator(new DefaultItemAnimator());
 
+            // Special RecyclerView Adapter
             WorkExpandableAdapter adapter = new WorkExpandableAdapter(activityContext, jobs);
             adapter.setParentClickableViewAnimationDefaultDuration();
             adapter.setParentAndIconExpandOnClick(true);
@@ -104,26 +105,21 @@ public static class WorkFragment extends Fragment {
         }
     }
 
-    /**
-    * Created by tmast_000 on 9/11/2015.
-    */
     public static class SkillFragment extends Fragment {
 
         // Backend
         private Context activityContext;
-        //@Bind(R.id.tvSkillName) Text tvSkillName;
-        //@Bind(R.id.rvSkills)
+
+        // UI
         RecyclerView rvSkills;
 
         // Business Logic
         private List<Skill> skills;
-        private View fragment;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_skills, container, false);
             activityContext = container.getContext();
-            fragment = view;
             setupRecyclerView(view);
             return view;
         }
@@ -151,18 +147,17 @@ public static class WorkFragment extends Fragment {
         // Backend
         private Context activityContext;
 
+        // UI
         RecyclerView rvEducation;
 
         // Business Logic
         private List<Education> educationList;
-        private View fragment;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_education, container, false);
             activityContext = container.getContext();
-            fragment = view;
-            setupRecyclerView(fragment);
+            setupRecyclerView(view);
             return view;
         }
 
@@ -171,6 +166,7 @@ public static class WorkFragment extends Fragment {
             rvEducation.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvEducation.addItemDecoration(new SimpleDividerItemDecoration(activityContext));
             rvEducation.setItemAnimator(new DefaultItemAnimator());
+
             EducationListAdapter adapter = new EducationListAdapter(educationList, activityContext);
             rvEducation.setAdapter(adapter);
         }

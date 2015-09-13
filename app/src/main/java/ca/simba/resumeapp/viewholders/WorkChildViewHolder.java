@@ -19,8 +19,7 @@ import ca.simba.resumeapp.mypojo.childclasses.WorkChild;
 public class WorkChildViewHolder extends ChildViewHolder {
 
     private final Context activityContext;
-    @Bind(R.id.tvExperience)
-    TextView tvExperience;
+    @Bind(R.id.tvExperience) TextView tvExperience;
     @Bind(R.id.tvSkills) TextView tvSkills;
 
     public WorkChildViewHolder(Context c, View itemView) {

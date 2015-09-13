@@ -1,4 +1,4 @@
-package ca.simba.resumeapp;
+package ca.simba.resumeapp.api;
 
 
 import ca.simba.resumeapp.api.Endpoints;

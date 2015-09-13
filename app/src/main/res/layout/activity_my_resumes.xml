@@ -1,28 +1,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/backgroundWhite"
     tools:context="ca.simba.resumeapp.activities.MyResumesActivity">
 
-    <include
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:text="Toolbar"/>
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        style="@style/ThemeOverlay.AppCompat.Dark" />
 
-<!--
-    <android.support.v7.widget.RecyclerView
-        android:id = "@+id/rvResumes"
+    <android.support.v7.widget.CardView
+        style="@style/CardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
--->
     <android.support.v7.widget.RecyclerView
         android:id = "@+id/rvResumes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
